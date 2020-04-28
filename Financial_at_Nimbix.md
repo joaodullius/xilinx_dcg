@@ -68,7 +68,7 @@ Observe that for 16384 call options it took 12,35 seconds in software emulation.
 
 #### Run in Hardware
 Now, let´s run Makefile for the Hardware mode.
-This will take a while. In the Nimbix box it took 4h 4m 15s.
+This will take a while. In the Nimbix box it took **4h 4m 15s**.
 ```
 make all TARGET=hw DEVICE=xilinx_u200_xdma_201830_2
 ```
@@ -110,8 +110,8 @@ nimbix@JARVICENAE-0A0A187D:/data/Vitis_Libraries/quantitative_finance/L2/tests/C
 ```
 
 #### Software Emulation vs Hardware Execution
-Observe that Software Emulation took 12.35 seconds versus 0.30 microseconds in the Hardware. That´s 40.795X performance.
-The harware ran at a Throuput of 54.1112 Mega call options calculations per second.
+Observe that Software Emulation took **12.35** seconds versus 0.30 microseconds in the Hardware. That´s **40.795x** performance.
+The harware ran at a Throuput of **54.1112 Mega call options calculations per second.**
 
 We can run Hardware Execution with 4194304 options to exercise full DDR bandwidth:
 ```
@@ -144,7 +144,7 @@ Throughput = 312.361 Mega options/sec
   Largest host-kernel rho difference   = -1.72667e-06
 ```
 
-Observe that it took 13.42ms and a Throubput of 312.361 Mega call options/sec
+Observe that it took **13.42ms** and a achieved a Throubput of **312.361 Mega call options/sec**
 
 
 ## Sources
