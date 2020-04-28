@@ -106,7 +106,6 @@ Throughput = 54.1112 Mega options/sec
   Largest host-kernel vega difference  = -3.3779e-07
   Largest host-kernel theta difference = -3.1506e-08
   Largest host-kernel rho difference   = 1.08024e-06
-nimbix@JARVICENAE-0A0A187D:/data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholes$
 ```
 
 #### Software Emulation vs Hardware Execution
