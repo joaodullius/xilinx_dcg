@@ -67,29 +67,85 @@ Throughput = 0.00132641 Mega options/sec
 Observe that for 16384 call options it took 12,35 seconds in software emulation.
 
 #### Run in Hardware
-Now, let´s run Makefile for the Hardware mode. This will take a while  (4h 4m 15s in a 8 core Nimbix instance):
+Now, let´s run Makefile for the Hardware mode.
+This will take a while. In the Nimbix box it took 4h 4m 15s.
 ```
 make all TARGET=hw DEVICE=xilinx_u200_xdma_201830_2
 ```
 
 Change to a Nimbix instance with U200 Alveo board and run:
+```
+cd /data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholes
+unset XCL_EMULATION_MODE
+./bin_xilinx_u200_xdma_201830_2/bs_test.exe ./xclbin_xilinx_u200_xdma_201830_2_hw/bs_kernel.xclbin 16384
+```
 
-        cd /data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholes
-        unset XCL_EMULATION_MODE
-        ./bin_xilinx_u200_xdma_201830_2/bs_test.exe ./xclbin_xilinx_u200_xdma_201830_2_hw/bs_kernel.xclbin 16384
+Expected results:
+```
+************
+BS Demo v1.0
+************
 
+Generating randomized data and reference results...
+Connecting to device and loading kernel...
+Found Platform
+Platform Name: Xilinx
+INFO: Importing ./xclbin_xilinx_u200_xdma_201830_2_hw/bs_kernel.xclbin
+Loading: './xclbin_xilinx_u200_xdma_201830_2_hw/bs_kernel.xclbin'
+Allocating buffers...
+Launching kernel...
+  Duration returned by profile API is 0.302784 ms ****
+Kernel done!
+Comparing results...
+Processed 16384 call options:
+Throughput = 54.1112 Mega options/sec
 
+  Largest host-kernel price difference = -6.19518e-05
+  Largest host-kernel delta difference = 4.00283e-07
+  Largest host-kernel gamma difference = -5.58116e-08
+  Largest host-kernel vega difference  = -3.3779e-07
+  Largest host-kernel theta difference = -3.1506e-08
+  Largest host-kernel rho difference   = 1.08024e-06
+nimbix@JARVICENAE-0A0A187D:/data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholes$
+```
 
--- end
+#### Software Emulation vs Hardware Execution
+Observe that Software Emulation took 12.35 seconds versus 0.30 microseconds in the Hardware. That´s 40.795X performance.
+The harware ran at a Throuput of 54.1112 Mega call options calculations per second.
 
-The hardware emulation can be run in a similar way, but a smaller number of parameters should be used as an RTL simulation is used under-the-hood:
+We can run Hardware Execution with 4194304 options to exercise full DDR bandwidth:
+```
+unset XCL_EMULATION_MODE
+./bin_xilinx_u200_xdma_201830_2/bs_test.exe ./xclbin_xilinx_u200_xdma_201830_2_hw/bs_kernel.xclbin 4194304
 
-        export XCL_EMULATION_MODE=hw_emu
-        ./bin_xilinx_u200_xdma_201830_2/bs_test.exe ./xclbin_xilinx_u200_xdma_201830_2_hw_emu/bs_kernel.xclbin 4096
-Assuming an Alveo U250 card with the XRT configured the hardware build is run in the same way. Here a much large number of parameters should be used to fully exercise the DDR bandwidth:
+************
+BS Demo v1.0
+************
 
-        unset XCL_EMULATION_MODE
-        ./bin_xilinx_u250_xdma_201830_2/bs_test.exe ./xclbin_xilinx_u250_xdma_201830_2_hw/bs_kernel.xclbin 4194304
+Generating randomized data and reference results...
+Connecting to device and loading kernel...
+Found Platform
+Platform Name: Xilinx
+INFO: Importing ./xclbin_xilinx_u200_xdma_201830_2_hw/bs_kernel.xclbin
+Loading: './xclbin_xilinx_u200_xdma_201830_2_hw/bs_kernel.xclbin'
+Allocating buffers...
+Launching kernel...
+  Duration returned by profile API is 13.4278 ms ****
+Kernel done!
+Comparing results...
+Processed 4194304 call options:
+Throughput = 312.361 Mega options/sec
+
+  Largest host-kernel price difference = -7.96791e-05
+  Largest host-kernel delta difference = -5.72562e-07
+  Largest host-kernel gamma difference = 1.29485e-07
+  Largest host-kernel vega difference  = 5.49625e-07
+  Largest host-kernel theta difference = -4.7764e-08
+  Largest host-kernel rho difference   = -1.72667e-06
+```
+
+Observe that it took 13.42ms and a Throubput of 312.361 Mega call options/sec
+
 
 ## Sources
 This document is based and extends the following documents:
