@@ -1,10 +1,4 @@
-## Clone Vitis Libraries fro GitHub
-
-```
-git clone https://github.com/Xilinx/Vitis_Libraries.git /data/Vitis_Libraries
-```
-
-## Run Black-Scholes Closed Form Demonstration (Layer 2) 
+## Run Black-Scholes Closed Form Demonstration (Layer 2) - U200
 
 
 ### Step 1 :
