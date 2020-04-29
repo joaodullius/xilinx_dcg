@@ -4,23 +4,26 @@
 ### Step 1 :
 Setup the build environment using the Vitis and XRT scripts:
 ````
-        source /opt/xilinx/Vitis/2019.2/settings64.sh
-        source /opt/xilinx/xrt/setup.sh
+source /opt/xilinx/Vitis/2019.2/settings64.sh
+source /opt/xilinx/xrt/setup.sh
  ````
  
- ### Step 2 :
+```
+cd /data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholesMerton
  ```
-  cd /data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholesMerton
-  ```
- #### Software Emulation
-Call the Makefile passing in the intended target and device. The Makefile supports software emulation, hardware emulation and hardware targets ('sw_emu', 'hw_emu' and 'hw', respectively). For example to build and run the test application:
+ 
+ ### Step 2 : Software Emulation
 
-        make check TARGET=sw_emu DEVICE=xilinx_u200_xdma_201830_2
+Call the Makefile passing in the intended target and device. The Makefile supports software emulation, hardware emulation and hardware targets ('sw_emu', 'hw_emu' and 'hw', respectively). For example to build and run the test application:
+```
+make check TARGET=sw_emu DEVICE=xilinx_u200_xdma_201830_2
+```
         
 For all Makefile targets, the host application and xclbin are delivered to named folders depending on the target and part selected. For example, the command above will produce:
-
-        ./bin_xilinx_u200_xdma_201830_2/bs_test.exe
-        ./xclbin_xilinx_u200_xdma_201830_2_sw_emu/bs_kernel.xclbin
+```
+./bin_xilinx_u200_xdma_201830_2/bs_test.exe
+./xclbin_xilinx_u200_xdma_201830_2_sw_emu/bs_kernel.xclbin
+```
 
 To run the application again in Software Emulation, run the follow commands:
 Note that 16384 is the number of option to be calculated, and needs to be in power of two (need to confirm this)
@@ -32,7 +35,6 @@ export XCL_EMULATION_MODE=sw_emu
 
 Expected results:
 ```
-
 *************
 BSM Demo v1.0
 *************
@@ -61,7 +63,7 @@ Throughput = 0.00111267 Mega options/sec
   ```
 Observe that for 16384 call options it took 14,74 seconds in software emulation.
 
-#### Run in Hardware
+### Step 3: Run in Hardware
 Now, let´s run Makefile for the Hardware mode.
 This will take a while. In the Nimbix box it took **4h 4m 15s**.
 ```
@@ -103,7 +105,7 @@ Throughput = 54.1112 Mega options/sec
   Largest host-kernel rho difference   = 1.08024e-06
 ```
 
-#### Software Emulation vs Hardware Execution
+### Software Emulation vs Hardware Execution
 Observe that Software Emulation took **12.35** seconds versus 0.30 microseconds in the Hardware. That´s **40.795x** performance.
 The harware ran at a Throuput of **54.1112 Mega call options calculations per second.**
 
@@ -140,6 +142,9 @@ Throughput = 312.361 Mega options/sec
 
 Observe that it took **13.42ms** and a achieved a Throubput of **312.361 Mega call options/sec**
 
+## Navigation
+Next: [Black-Scholes-Merton Closed Form Demonstration (Layer 3) - U200](CFBlackScholesMerton_L3_u200.md)
+Index: [Xilinx´s Quantitative Finances Examples / Walkthrough](quantitative_finance.md)
 
 ## Sources
 This document is based and extends the following documents:
