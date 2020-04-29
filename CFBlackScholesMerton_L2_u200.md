@@ -143,8 +143,8 @@ Throughput = 312.361 Mega options/sec
 Observe that it took **13.42ms** and a achieved a Throubput of **312.361 Mega call options/sec**
 
 ## Navigation
-Next: [Black-Scholes-Merton Closed Form Demonstration (Layer 3) - U200](CFBlackScholesMerton_L3_u200.md)
-Index: [Xilinx´s Quantitative Finances Examples / Walkthrough](quantitative_finance.md)
+- Next: [Black-Scholes-Merton Closed Form Demonstration (Layer 3) - U200](CFBlackScholesMerton_L3_u200.md)
+- Index: [Xilinx´s Quantitative Finances Examples / Walkthrough](quantitative_finance.md)
 
 ## Sources
 This document is based and extends the following documents:
