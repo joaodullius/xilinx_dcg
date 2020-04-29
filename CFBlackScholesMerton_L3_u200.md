@@ -74,6 +74,9 @@ Loading: 'bsm_kernel.xclbin'
 ```
 Observe the 7,29 seconds of execution time.
 
+## Navigation
+Index: [Xilinx´s Quantitative Finances Examples / Walkthrough](quantitative_finance.md)
+
 ## Sources
 This document is based and extends the following documents:
 - https://github.com/Xilinx/Vitis_Libraries/tree/master/quantitative_finance/L3/tests/CFBlackScholesMerton
