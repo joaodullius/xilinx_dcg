@@ -83,7 +83,7 @@ cd /data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholesMerton
 make xclbin TARGET=hw DEVICE=xilinx_u200_xdma_201830_2
 ```
 
-#### Step 2.3: Build host code & run executable
+#### Step 3.2: Build host code & run executable
 ```
 cd L3/tests/CFBlackScholesMerton
 make run TARGET=hw DEVICE=xilinx_u200_xdma_201830_2
