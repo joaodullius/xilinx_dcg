@@ -18,7 +18,7 @@ make
 ```
 
 #### Step 2.2: Build the matching CFBlackScholesMerton Kernel (option)
-**Attention:** You don´t need to run this step if you already ran the [Black-Scholes-Merton Closed Form Demonstration (Layer 2)](CFBlackScholesMerton_L2_u200.md) before.
+**Attention:** You don´t need to run this step if you already ran the [Black-Scholes-Merton Closed Form Demonstration (Layer 2)](CFBlackScholesMerton_L2_u200.md) in sw_emu mode before.
 ```
 cd /data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholesMerton
 make xclbin TARGET=sw_emu DEVICE=xilinx_u200_xdma_201830_2
@@ -73,6 +73,21 @@ Loading: 'bsm_kernel.xclbin'
 [XLNX] Processed 432 assets in 7293897 us
 ```
 Observe the 7,29 seconds of execution time.
+
+### Step 3 : Hardware Execution Mode
+
+#### Step 3.1: Build the matching CFBlackScholesMerton Kernel (option)
+**Attention:** You don´t need to run this step if you already ran the [Black-Scholes-Merton Closed Form Demonstration (Layer 2)](CFBlackScholesMerton_L2_u200.md) in hw mode before.
+```
+cd /data/Vitis_Libraries/quantitative_finance/L2/tests/CFBlackScholesMerton
+make xclbin TARGET=hw DEVICE=xilinx_u200_xdma_201830_2
+```
+
+#### Step 2.3: Build host code & run executable
+```
+cd L3/tests/CFBlackScholesMerton
+make run TARGET=hw DEVICE=xilinx_u200_xdma_201830_2
+```
 
 ## Navigation
 Index: [Xilinx´s Quantitative Finances Examples / Walkthrough](quantitative_finance.md)
